@@ -38,6 +38,4 @@ SELECT * FROM producto WHERE precio = (SELECT MAX(precio) FROM producto WHERE co
 select nombre_producto from producto where codigo_fabricante = (select codigo from fabricante where nombre = 'Lenovo') order by precio desc limit 1;
 select nombre_producto from producto where codigo_fabricante = (select codigo from fabricante where nombre = 'Hewlett-Packard') order by precio  limit 1;
 SELECT * FROM producto WHERE precio >= ( SELECT MAX(precio) FROM producto WHERE codigo_fabricante = ( SELECT codigo FROM fabricante WHERE nombre = 'Lenovo'));
-select * from producto inner join fabricante on producto.codigo_fabricante = fabricante.codigo where fabricante.nombre = "Asus" and producto.precio  > avg(producto.precio);
 SELECT * from producto where codigo_fabricante = (select codigo from fabricante where nombre = 'Asus') and precio > (select avg(precio) from producto where codigo_fabricante = (select codigo from fabricante where nombre = 'Asus'));
-
