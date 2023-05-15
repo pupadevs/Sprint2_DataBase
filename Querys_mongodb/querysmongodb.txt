@@ -1,0 +1,25 @@
+MONGO DB QUERYS
+
+
+
+db.barcelona.find({});
+db.barcelona.find({}, {restaurante_id: 1, name : 1, borough: 1, cuisine: 1});
+db.barcelona.find({}, {restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0});
+db.barcelona.find({}, {_id: 0, restaurant_id: 1, name: 1, borough: 1, "address.zipcode": 1});
+db.barcelona.find( {"borough": "Bronx"});
+db.barcelona.find( {"borough": "Bronx"}).limit(5);
+db.barcelona.find( {"borough": "Bronx"}).skip(5);
+db.barcelona.find({ "grades.score": { $gt: 90 }});
+db.barcelona.find({"grades.score": {$gt: 80, $lt: 100}}),otra manera db.barcelona.find({ $and: [ { "grades.score": { $gt: 80 } }, { "grades.score": { $lt: 100 } } ] });
+db.barcelona.find( { "address.coord.0": { $lt:-95.754168 } });
+db.barcelona.find({ "cuisine": { $ne: "American" }, "grades.score": { $gt: 70 }, "address.coord.0": { $lt: -65.754168 }});
+db.barcelona.find({ "cuisine": { $ne: "American" }, "grades.score": { $gt: 70 }, "address.coord.0": { $lt: -65.754168 }});
+db.barcelona.find({"cuisine": { $ne: "American" }, "grades.grade": "A", "borough": {$ne: "Brooklyn"}});
+db.restaurantes.find({ "name": { $regex: /^Wil/ } }, { "restaurante_id": 1, "name": 1, "borough": 1, "cuisine": 1 }).sort({"cuisine": -1});
+db.barcelona.find({ name: { $regex: /ces$/ } }, {restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 });
+db.barcelona.find({ name: { $regex: /Reg/ } }, {restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 });
+db.restaurantes.find( { $and: [{ borough: "Bronx" },  { $or: [{ cuisine: "American"}, {cuisine: "Chinese"} ] }]});
+db.barcelona.find({ borough: "Bronx", cuisine: { $in: ["American", "Chinese"] }});
+db.barcelona.find({borough: { $nin: ["Staten Island", "Queens", "Bronx", "Brooklyn"] }}, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 });
+db.barcelona.find({"grades.score": {$lt : 10}}, {_id: 1, name: 1, borough: 1, cuisine: 1});
+db.barcelona.find( { cuisine: "Seafood",  $nor: [{ cuisine: "American" }, { cuisine: "Chinese" }, { name: /^Wil/ }] },  { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 });
