@@ -1,0 +1,2 @@
+select * from cliente inner join ventas on cliente.idcliente = ventas.idcliente;
+select gafas.modelo, empleado.nombre from gafas inner join ventas on gafas.idgafas = ventas.idgafas inner join empleado on empleado.idempleado = ventas.idempleado;
