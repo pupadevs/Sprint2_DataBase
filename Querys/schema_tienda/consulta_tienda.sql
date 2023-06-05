@@ -1,6 +1,6 @@
 select producto.nombre from producto;
 select producto.nombre, precio from producto;
-select * from producto;
+show columns from producto;
 select producto.nombre, producto.precio, producto.precio * 1.10 from producto;
 select producto.nombre, round (precio * 1.10, 2) as Dolares_estadounidenses, precio as Euro from producto;
 select upper(producto.nombre), precio from producto;
@@ -21,8 +21,8 @@ select producto.nombre from producto where producto.codigo_fabricante = 2;
 select producto.nombre, producto.precio, fabricante.nombre as fabricante from producto inner join fabricante on fabricante.codigo = producto.codigo_fabricante;
 select producto.nombre, producto.precio, fabricante.nombre as fabricante from producto inner join fabricante on fabricante.codigo = producto.codigo_fabricante order by  fabricante.nombre;
 select producto.codigo, producto.nombre, fabricante.codigo as codigo_fabricante, fabricante.nombre as fabricante from producto inner join fabricante on fabricante.codigo = producto.codigo_fabricante;
-select producto.nombre, min(producto.precio), fabricante.nombre as fabricante from producto inner join fabricante on fabricante.codigo = producto.codigo_fabricante limit 1;
-select producto.nombre, max(producto.precio), fabricante.nombre as fabricante from producto inner join fabricante on fabricante.codigo = producto.codigo_fabricante limit 1;
+select producto.nombre, producto.precio, fabricante.nombre from producto, fabricante where producto.codigo_fabricante = fabricante.codigo and producto.precio order by producto.precio asc limit 1;
+select producto.nombre, producto.precio, fabricante.nombre from producto, fabricante where producto.codigo_fabricante = fabricante.codigo and producto.precio order by producto.precio desc limit 1;
 select *  from producto inner join fabricante on fabricante.codigo = producto.codigo_fabricante where fabricante.nombre = 'Lenovo';
 select * from producto inner join fabricante on fabricante.codigo = producto.codigo_fabricante where fabricante.nombre = 'Crucial' having producto.precio > 200;
 select * from producto inner join fabricante on fabricante.codigo = producto.codigo_fabricante where fabricante.nombre = 'Asus' or fabricante.nombre = 'Hewlett-Packard' or fabricante.nombre = 'Seagate';
