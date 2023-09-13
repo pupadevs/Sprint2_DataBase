@@ -1,2 +1,0 @@
-SELECT count(producto.idproducto) as bebida, cliente.localidad from producto inner join pedidos on producto.idproducto = pedidos.idpedidos inner join cliente on cliente.idcliente = pedidos.idcliente where producto.tipo = 'bebida' and cliente.localidad = 'barcelona' group by cliente.localidad;
-select count(pedidos.idpedidos) from pedidos inner join empleado on empleado.idempleado = pedidos.idempleado where empleado.apellido1 = 'sena' group by pedidos.idempleado ; 
